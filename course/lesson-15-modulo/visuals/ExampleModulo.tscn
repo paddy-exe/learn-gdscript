@@ -31,22 +31,5 @@ margin_top = 7.0
 margin_right = 307.0
 margin_bottom = 387.0
 script = SubResource( 1 )
-scene = ExtResource( 2 )
 
-[node name="Frame" parent="RunnableCodeExample" index="0"]
-margin_right = 300.0
-margin_bottom = 380.0
-rect_min_size = Vector2( 300, 380 )
-
-[node name="ResetButton" parent="RunnableCodeExample/Frame/HBoxContainer" index="0"]
-visible = false
-
-[node name="RunButton" parent="RunnableCodeExample/Frame/HBoxContainer" index="1"]
-visible = false
-
-[node name="GDScriptCode" parent="RunnableCodeExample" index="1"]
-margin_left = 244.0
-margin_right = 644.0
-margin_bottom = 260.0
-
-[editable path="RunnableCodeExample"]
+[node name="Modulo" parent="RunnableCodeExample" instance=ExtResource( 2 )]
