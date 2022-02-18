@@ -33,3 +33,11 @@ func test_turtle_reaches_the_robot() -> String:
 			+ " instead."
 		)
 	return ""
+
+
+func test_path_does_not_hit_obstacles() -> String:
+	var unit_coordinates: Array = game_board.units.values()
+	for obstacle in unit_coordinates.slice(2, unit_coordinates.size()):
+		if obstacle in path:
+			return "The turtle hit a rock at coordinates " + str(obstacle) + ". You need to change its path."
+	return ""

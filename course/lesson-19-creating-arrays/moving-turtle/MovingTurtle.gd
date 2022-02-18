@@ -4,6 +4,7 @@ export var board_size := Vector2(6, 4) setget set_board_size
 export var cell_size := Vector2(80, 80)
 export var line_width := 4
 export var draw_cell_coordinates := false
+export var label_font: Resource
 
 var board_size_px := cell_size * board_size
 
@@ -15,6 +16,8 @@ var _label_container := Control.new()
 # EXPORT path
 var turtle_path = [Vector2(1, 0), Vector2(1, 1), Vector2(2, 1), Vector2(3, 1), Vector2(4, 1), Vector2(5, 1), Vector2(5, 2), Vector2(5, 3)]
 # /EXPORT path
+
+onready var turtle := $Turtle
 
 
 func _ready() -> void:
@@ -32,7 +35,11 @@ func _ready() -> void:
 
 func _run():
 	update()
-	yield(get_tree().create_timer(0.5), "timeout")
+	var path = []
+	for cell in turtle_path:
+		path.append(calculate_cell_position(cell))
+	turtle.move(path)
+	yield(turtle, "goal_reached")
 	Events.emit_signal("practice_run_completed")
 
 
@@ -50,6 +57,7 @@ func _draw() -> void:
 			for y in board_size.y:
 				var cell = Vector2(x, y)
 				var label = Label.new()
+				label.add_font_override("font", label_font)
 				label.text = str(cell)
 				_label_container.add_child(label)
 				label.rect_position = calculate_cell_position(cell) - label.rect_size / 2.0
