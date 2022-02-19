@@ -257,12 +257,19 @@ description = "Help the turtle find its way to the robot! Give it a path to foll
 script = ExtResource( 4 )
 practice_id = "res://course/lesson-19-creating-arrays/practice-PxY8VUDp.tres"
 title = "Selecting units"
-goal = ""
-starting_code = ""
-hints = PoolStringArray(  )
-validator_script_path = ""
-script_slice_path = ""
-documentation_references = PoolStringArray(  )
+goal = "In this tactical game, the player and computer can select multiple units at once. You need to call the [code]select_units()[/code] function and pass it an array of [code]Vector2[/code] coordinates to know which units to select.
+
+Each [code]Vector2[/code] in the array represents a cell with a unit.
+
+You can pass arrays in function calls as arguments. As an array is a value type the computer recognizes, you can pass the whole array as a single function argument.
+
+Select all units on the board by passing the correct array to the [code]select_units()[/code] function."
+starting_code = "func run():
+	select_units([])"
+hints = PoolStringArray( "You can write [code]Vector2[/code] values inside the brackets in the function call: [code]select_units([Vector2(1, 1), Vector2(3, 2), Vector2(3, 5)])[/code]." )
+validator_script_path = "selecting-units/TestSelectingUnits.gd"
+script_slice_path = "selecting-units/SelectingUnits.live-editor/slices/SelectingUnits.run.slice.tres"
+documentation_references = PoolStringArray( "select_units" )
 documentation_resource = ExtResource( 3 )
 description = "Write an array to select all units on the board in this strategy game."
 
