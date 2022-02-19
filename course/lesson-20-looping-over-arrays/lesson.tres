@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=21 format=2]
+[gd_resource type="Resource" load_steps=25 format=2]
 
 [ext_resource path="res://resources/Lesson.gd" type="Script" id=1]
 [ext_resource path="res://resources/ContentBlock.gd" type="Script" id=2]
 [ext_resource path="res://resources/QuizChoice.gd" type="Script" id=3]
+[ext_resource path="res://course/Documentation.tres" type="Resource" id=4]
+[ext_resource path="res://resources/Practice.gd" type="Script" id=5]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -180,9 +182,16 @@ script = ExtResource( 2 )
 content_id = "res://course/lesson-20-looping-over-arrays/content-En91c9ll.tres"
 title = ""
 type = 0
-text = "The code above uses the [code]in[/code] keyword, which allows you to check if a value exists [i]in[/i] an array.
+text = "The code above uses several features you didn't learn yet:
 
-We'll look at it again later in the course."
+- In a condition, the [code]in[/code] keyword allows you to check if a value exists [i]in[/i] an array.
+- The array's [code]append()[/code] function appends a new value at the end of the array.
+
+Notice the use of a period after the [code]selected_units[/code] variable, to call the [code]append()[/code] function. It's because this function exists only on arrays.
+
+When functions exist only on a specific value type, you write a dot after the value to call the function on it.
+
+We'll revisit those two features again in the following lessons."
 visual_element_path = ""
 reverse_blocks = false
 has_separator = true
@@ -203,8 +212,45 @@ visual_element_path = ""
 reverse_blocks = false
 has_separator = false
 
+[sub_resource type="Resource" id=18]
+script = ExtResource( 5 )
+practice_id = "res://course/lesson-20-looping-over-arrays/practice-f8B67UJ8.tres"
+title = "Move the robot along the path"
+goal = "Our AI pathfinding algorithm provided a path for the robot to move to the right edge of the grid. Your task is to use a [code]for[/code] loop to make the robot move.
+
+This practice is a good opportunity to start combining and exploring coding features a bit more.
+
+To move the robot, call [i]its[/i] [code]move_to()[/code] function, like so: [code]robot.move_to(target_position)[/code]
+
+There's an extra catch! The algorithm calculated a path with only grid coordinates. You need to convert them to screen positions in pixels.
+
+To do so, call [code]cell_to_position(cell_coordinates)[/code]."
+starting_code = "var robot_path = [Vector2(1, 0), Vector2(1, 1), Vector2(1, 2), Vector2(2, 2), Vector2(3, 2), Vector2(4, 2), Vector2(5, 2)]
+
+func run():
+	"
+hints = PoolStringArray( "You should start with a for loop that iterates over every cell in [code]robot_path[/code].", "In the loop, you need to convert every cell coordinate by calling [code]cell_to_position()[/code]. If you named your loop\'s temporary variable [code]cell[/code], the function call should look like [code]cell_to_position(cell)[/code].", "You need to pass the converted cell position to the robot\'s [code]move_to()[/code] function. To do so, you can nest the function calls: [code]robot.move_to(cell_to_position(...))[/code]." )
+validator_script_path = "robot-path/TestRobotPath.gd"
+script_slice_path = "robot-path/RobotPath.live-editor/slices/RobotPath.run.slice.tres"
+documentation_references = PoolStringArray( "robot.move_to", "cell_to_position" )
+documentation_resource = ExtResource( 4 )
+description = "Our AI pathfinding algorithm is giving us a path to move the robot. Now, you need to make the turtle move along the path."
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 5 )
+practice_id = "res://course/lesson-20-looping-over-arrays/practice-clsFcSrG.tres"
+title = "Back to the drawing board"
+goal = ""
+starting_code = ""
+hints = PoolStringArray(  )
+validator_script_path = ""
+script_slice_path = ""
+documentation_references = PoolStringArray(  )
+documentation_resource = ExtResource( 4 )
+description = "The drawing turtle makes its comeback. Fear not! Armed with loops, you'll make it draw faster than ever before."
+
 [resource]
 script = ExtResource( 1 )
 title = "Looping over arrays"
 content_blocks = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 13 ), SubResource( 14 ), SubResource( 10 ), SubResource( 15 ), SubResource( 16 ), SubResource( 11 ), SubResource( 17 ), SubResource( 12 ) ]
-practices = [  ]
+practices = [ SubResource( 18 ), SubResource( 19 ) ]
