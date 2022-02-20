@@ -2,27 +2,27 @@ extends PracticeTester
 
 var game_board: Node2D
 var robot: Node2D
-var path_cell := []
-var path_position := []
+var path_source := []
+var path_robot := []
 
 
 func _prepare() -> void:
 	game_board = _scene_root_viewport.get_child(0)
 	robot = game_board.get_node("Robot")
-	path_cell = game_board.robot_path
-	path_position = robot.points
+	path_source = game_board.robot_path
+	path_robot = robot.points
 
 
 func test_robot_moves_along_blue_path() -> String:
-	if game_board.EXPECTED_PATH != path_cell:
+	if game_board.EXPECTED_PATH != path_source:
 		return tr("The robot's path changed. Did you change the robot_path array?")
 
-	if path_position.size() == 0:
+	if path_robot.size() == 0:
 		return tr("The robot didn't move at all. Did you call robot.move_to()?")
 
-	for point in path_position:
-		if point != Vector2.ZERO and point in path_cell:
-			return tr("The coordinates the robot should move to look like grid cell coordinates. Did you call cell_to_position()?")
+	for point in path_robot:
+		if point != Vector2.ZERO and not point in path_source:
+			return tr("The robot's movement path doesn't match the robot_path array. They should be the same.")
 	return ""
 
 

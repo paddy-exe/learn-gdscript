@@ -218,21 +218,17 @@ practice_id = "res://course/lesson-20-looping-over-arrays/practice-f8B67UJ8.tres
 title = "Move the robot along the path"
 goal = "Our AI pathfinding algorithm provided a path for the robot to move to the right edge of the grid. Your task is to use a [code]for[/code] loop to make the robot move.
 
-This practice is a good opportunity to start combining and exploring coding features a bit more.
+To move the robot, call [i]its[/i] [code]move_to()[/code] function, like so: [code]robot.move_to()[/code].
 
-To move the robot, call [i]its[/i] [code]move_to()[/code] function, like so: [code]robot.move_to(target_position)[/code]
-
-There's an extra catch! The algorithm calculated a path with only grid coordinates. You need to convert them to screen positions in pixels.
-
-To do so, call [code]cell_to_position(cell_coordinates)[/code]."
+The [code]move_to()[/code] function only exists on the robot, which is why you need to access it this way."
 starting_code = "var robot_path = [Vector2(1, 0), Vector2(1, 1), Vector2(1, 2), Vector2(2, 2), Vector2(3, 2), Vector2(4, 2), Vector2(5, 2)]
 
 func run():
 	"
-hints = PoolStringArray( "You should start with a for loop that iterates over every cell in [code]robot_path[/code].", "In the loop, you need to convert every cell coordinate by calling [code]cell_to_position()[/code]. If you named your loop\'s temporary variable [code]cell[/code], the function call should look like [code]cell_to_position(cell)[/code].", "You need to pass the converted cell position to the robot\'s [code]move_to()[/code] function. To do so, you can nest the function calls: [code]robot.move_to(cell_to_position(...))[/code]." )
+hints = PoolStringArray( "You should start with a for loop that iterates over every cell in [code]robot_path[/code].", "You need to pass the cell position to the robot\'s [code]move_to()[/code] function in the loop." )
 validator_script_path = "robot-path/TestRobotPath.gd"
 script_slice_path = "robot-path/RobotPath.live-editor/slices/RobotPath.run.slice.tres"
-documentation_references = PoolStringArray( "robot.move_to", "cell_to_position" )
+documentation_references = PoolStringArray( "robot.move_to" )
 documentation_resource = ExtResource( 4 )
 description = "Our AI pathfinding algorithm is giving us a path to move the robot. Now, you need to make the turtle move along the path."
 

@@ -22,7 +22,7 @@ var robot_path = [Vector2(1, 0), Vector2(1, 1), Vector2(1, 2), Vector2(2, 2), Ve
 
 func run():
 	for cell in robot_path:
-		robot.move_to(cell_to_position(cell))
+		robot.move_to(cell)
 # /EXPORT run
 
 

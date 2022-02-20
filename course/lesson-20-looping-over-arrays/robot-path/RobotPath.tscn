@@ -13,24 +13,26 @@ onready var tween := $Tween as Tween
 var move_queue := []
 var points := []
 
-func move_to(pos: Vector2):
-	move_queue.append(pos)
-	points.append(pos)
+
+func move_to(cell: Vector2):
+	move_queue.append(cell)
+	points.append(cell)
 	if not tween.is_active():
 		_play_move_animation()
 
+
 func _play_move_animation():
-	var target_pos = move_queue.pop_front()
-	if not target_pos:
+	var target_cell = move_queue.pop_front()
+	if not target_cell:
 		emit_signal(\"goal_reached\")
 		return
 
-	while target_pos:
-		tween.interpolate_property(self, \"position\", position, target_pos, 0.2)
+	while target_cell:
+		tween.interpolate_property(self, \"position\", position, get_parent().cell_to_position(target_cell), 0.2)
 		tween.start()
 		yield(tween, \"tween_all_completed\")
 		yield(get_tree().create_timer(0.2), \"timeout\")
-		target_pos = move_queue.pop_front()
+		target_cell = move_queue.pop_front()
 	emit_signal(\"goal_reached\")
 "
 

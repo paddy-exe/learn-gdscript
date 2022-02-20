@@ -15,6 +15,7 @@ signal turtle_finished
 
 var draw_speed := 400.0
 var turn_speed_degrees := 260.0
+var speed_multiplier := 1.0
 
 var _points := []
 var _polygons := []
