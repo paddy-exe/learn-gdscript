@@ -2,18 +2,20 @@ extends DrawingTurtle
 
 
 func _run():
-	draw_speed = 800
 	reset()
+	# Works around directly setting variables in parent class as the parent class isn't recognized from the live editor.
+	set("speed_multiplier", 1.25)
 	run()
 	play_draw_animation()
 
+
 # EXPORT draw
-var rectangle_sizes = [Vector2(200, 120), Vector2(140, 80), Vector2(80, 140)]
+var rectangle_sizes = [Vector2(200, 120), Vector2(140, 80), Vector2(80, 140), Vector2(200, 140)]
 
 func run():
 	for size in rectangle_sizes:
 		draw_rectangle(size.x, size.y)
-		jump(size.x, size.y)
+		jump(size.x, 0)
 # /EXPORT draw
 
 
@@ -31,7 +33,6 @@ func draw_rectangle(length, height):
 func _ready() -> void:
 	if not is_connected("turtle_finished", self, "_complete_run"):
 		connect("turtle_finished", self, "_complete_run")
-	_run()
 
 
 func _complete_run() -> void:

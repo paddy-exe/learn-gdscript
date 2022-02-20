@@ -236,12 +236,23 @@ description = "Our AI pathfinding algorithm is giving us a path to move the robo
 script = ExtResource( 5 )
 practice_id = "res://course/lesson-20-looping-over-arrays/practice-clsFcSrG.tres"
 title = "Back to the drawing board"
-goal = ""
-starting_code = ""
-hints = PoolStringArray(  )
-validator_script_path = ""
-script_slice_path = ""
-documentation_references = PoolStringArray(  )
+goal = "We want to draw many rectangles, something surprisingly common in games.
+
+When writing the code by hand, it gets tedious. Instead, you'll often store the size of your shapes in arrays and use a loop to draw them all in batches.
+
+That's what you'll do in this practice.
+
+Use a [code]for[/code] loop to draw every rectangle in the [code]rectangle_sizes[/code] array with the [code]draw_rectangle()[/code] function.
+
+The rectangles shouldn't overlap or cross each other. To avoid that, you'll need to call the [code]jump()[/code] function."
+starting_code = "var rectangle_sizes = [Vector2(200, 120), Vector2(140, 80), Vector2(80, 140)]
+
+func run():
+	"
+hints = PoolStringArray( "Each value in the [code]rectangle_sizes[/code] array is a [code]Vector2[/code]. You\'ll need to access its [code]x[/code] and [code]y[/code] sub-components to draw rectangles.", "In the loop, you first need to call [code]draw_rectangle()[/code], and then [code]jump()[/code]. Otherwise, at least two rectangles will overlap.", "The arguments when calling [code]jump()[/code] can just be large enough to space out the rectangles. For example, [code]jump(300, 0)[/code]" )
+validator_script_path = "drawing-in-loops/TestsDrawingInLoops.gd"
+script_slice_path = "drawing-in-loops/DrawingInLoops.live-editor/slices/DrawingInLoops.draw.slice.tres"
+documentation_references = PoolStringArray( "draw_rectangle", "jump" )
 documentation_resource = ExtResource( 4 )
 description = "The drawing turtle makes its comeback. Fear not! Armed with loops, you'll make it draw faster than ever before."
 
